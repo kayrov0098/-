@@ -34,16 +34,16 @@
             label4 = new Label();
             label5 = new Label();
             label6 = new Label();
-            numericUpDown1 = new NumericUpDown();
-            numericUpDown2 = new NumericUpDown();
-            numericUpDown3 = new NumericUpDown();
+            heigth = new NumericUpDown();
+            width = new NumericUpDown();
+            depth = new NumericUpDown();
             comboBox1 = new ComboBox();
             comboBox2 = new ComboBox();
             comboBox3 = new ComboBox();
             button1 = new Button();
-            ((System.ComponentModel.ISupportInitialize)numericUpDown1).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDown2).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDown3).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)heigth).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)width).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)depth).BeginInit();
             SuspendLayout();
             // 
             // label1
@@ -100,26 +100,35 @@
             label6.TabIndex = 5;
             label6.Text = "Исполнение дна";
             // 
-            // numericUpDown1
+            // heigth
             // 
-            numericUpDown1.Location = new Point(127, 28);
-            numericUpDown1.Name = "numericUpDown1";
-            numericUpDown1.Size = new Size(120, 23);
-            numericUpDown1.TabIndex = 6;
+            heigth.Location = new Point(127, 28);
+            heigth.Maximum = new decimal(new int[] { 2000, 0, 0, 0 });
+            heigth.Minimum = new decimal(new int[] { 800, 0, 0, 0 });
+            heigth.Name = "heigth";
+            heigth.Size = new Size(120, 23);
+            heigth.TabIndex = 6;
+            heigth.Value = new decimal(new int[] { 1000, 0, 0, 0 });
             // 
-            // numericUpDown2
+            // width
             // 
-            numericUpDown2.Location = new Point(127, 57);
-            numericUpDown2.Name = "numericUpDown2";
-            numericUpDown2.Size = new Size(120, 23);
-            numericUpDown2.TabIndex = 7;
+            width.Location = new Point(127, 57);
+            width.Maximum = new decimal(new int[] { 2500, 0, 0, 0 });
+            width.Minimum = new decimal(new int[] { 1000, 0, 0, 0 });
+            width.Name = "width";
+            width.Size = new Size(120, 23);
+            width.TabIndex = 7;
+            width.Value = new decimal(new int[] { 1000, 0, 0, 0 });
             // 
-            // numericUpDown3
+            // depth
             // 
-            numericUpDown3.Location = new Point(127, 89);
-            numericUpDown3.Name = "numericUpDown3";
-            numericUpDown3.Size = new Size(120, 23);
-            numericUpDown3.TabIndex = 8;
+            depth.Location = new Point(127, 89);
+            depth.Maximum = new decimal(new int[] { 500, 0, 0, 0 });
+            depth.Minimum = new decimal(new int[] { 200, 0, 0, 0 });
+            depth.Name = "depth";
+            depth.Size = new Size(120, 23);
+            depth.TabIndex = 8;
+            depth.Value = new decimal(new int[] { 200, 0, 0, 0 });
             // 
             // comboBox1
             // 
@@ -167,9 +176,9 @@
             Controls.Add(comboBox3);
             Controls.Add(comboBox2);
             Controls.Add(comboBox1);
-            Controls.Add(numericUpDown3);
-            Controls.Add(numericUpDown2);
-            Controls.Add(numericUpDown1);
+            Controls.Add(depth);
+            Controls.Add(width);
+            Controls.Add(heigth);
             Controls.Add(label6);
             Controls.Add(label5);
             Controls.Add(label4);
@@ -178,9 +187,9 @@
             Controls.Add(label1);
             Name = "Form1";
             Text = "Form1";
-            ((System.ComponentModel.ISupportInitialize)numericUpDown1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDown2).EndInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDown3).EndInit();
+            ((System.ComponentModel.ISupportInitialize)heigth).EndInit();
+            ((System.ComponentModel.ISupportInitialize)width).EndInit();
+            ((System.ComponentModel.ISupportInitialize)depth).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -193,9 +202,9 @@
         private Label label4;
         private Label label5;
         private Label label6;
-        private NumericUpDown numericUpDown1;
-        private NumericUpDown numericUpDown2;
-        private NumericUpDown numericUpDown3;
+        private NumericUpDown heigth;
+        private NumericUpDown width;
+        private NumericUpDown depth;
         private ComboBox comboBox1;
         private ComboBox comboBox2;
         private ComboBox comboBox3;
