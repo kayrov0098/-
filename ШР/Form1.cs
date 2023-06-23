@@ -18,19 +18,20 @@ namespace ШР
         SldWorks swApp;
         IModelDoc2 swModel;
         AssemblyDoc swAssy;
-        string address = "C:\\Users\\kayrov\\Documents\\ШР\\";
+        string address = "C:\\SolidAPI\\ШР\\";
         int err;
         int war;
         int d = 1000;
         double widthPanelIx;
         double heightPanelEx;
+        
 
 
 
         private void button1_Click(object sender, EventArgs e)
         {
             var widthCabinet = (double)width.Value;
-
+            var heightCabinet = (double)heigth.Value;
 
 
 
@@ -66,32 +67,57 @@ namespace ШР
             swAssy = (AssemblyDoc)swModel;
 
             // Редактирование левой панели
-
-            swModel.Extension.SelectByID2("Ребро-кромка13@Панель внутр.-4@шр", "BODYFEATURE", 0, 0, 0, false, 0, null, 0);
-            swModel.IParameter("D1@Эскиз17@Панель внутр..Part").SetValue3(widthPanelIx, 2, null);
-            swAssy.EditAssembly();
             
+            // Редактирование ширины
+
+            swModel.Extension.SelectByID2("Ребро-кромка4@Панель внутр.-3@шр", "BODYFEATURE", 0, 0, 0, false, 0, null, 0);
+            swModel.IParameter("D7@Ребро-кромка4@Панель внутр.-3.Part").SetValue3(widthPanelIx, 3, "Левая");
+            
+            // Редактирование высоты
+           
+            swModel.Extension.SelectByID2("D2@Эскиз1@Панель внутр.-3@шр", "DIMENSION", 0, 0, 0, false, 0, null, 0);
+            swModel.IParameter("D2@Эскиз1@Панель внутр..Part").SetValue3(heightCabinet, 3, "Левая");
+            
+            // Выход в сборку
+
+            swAssy.EditAssembly();
 
 
-            // Редактирование правой панели  46
-            if (widthCabinet > 1500)
+
+            // Редактирование правой панели  
+
+            // Редакция ширины
+
+            swModel.Extension.SelectByID2("Ребро-кромка10@Панель внутр.-4@шр", "BODYFEATURE", 0, 0, 0, false, 0, null, 0);
+            swModel.IParameter("D7@Ребро-кромка10@Панель внутр.-4.Part").SetValue3(widthPanelIx, 3, "Правая");
+
+            // Редакция гибов замка
+
+            if (widthCabinet < 1500)
             {
-                swModel.IParameter("D1@Эскиз17@Панель внутр..Part").SetValue3(widthPanelIx, 2, null);
-                swModel.IParameter("D1@Эскиз38@Панель внутр..Part").SetValue3(23, 3, "Правая");
-
-                swModel.IParameter("D1@Эскиз41@Панель внутр..Part").SetValue3(11, 3, "Правая");
-
+                swModel.Extension.SelectByID2("Ребро-кромка11@Панель внутр.-4@шр", "BODYFEATURE", 0, 0, 0, false, 0, null, 0);
+                swModel.IParameter("D7@Ребро-кромка11@Панель внутр.-4.Part").SetValue3(23, 3, "Правая");
                 swModel.Extension.SelectByID2("Ребро-кромка13@Панель внутр.-4@шр", "BODYFEATURE", 0, 0, 0, false, 0, null, 0);
-                swModel.EditUnsuppress2();
-                swModel.Extension.SelectByID2("Ребро-Кромка12@Панель внутр.-4@шр", "BODYFEATURE", 0, 0, 0, false, 0, null, 0);
                 swModel.EditSuppress2();
-
+                swModel.Extension.SelectByID2("Ребро-Кромка12@Панель внутр.-4@шр", "BODYFEATURE", 0, 0, 0, false, 0, null, 0);
+                swModel.EditUnsuppress2();
+                swAssy.EditAssembly();
             }
             else
             {
-
+                swModel.Extension.SelectByID2("Ребро-кромка11@Панель внутр.-4@шр", "BODYFEATURE", 0, 0, 0, false, 0, null, 0);
+                swModel.IParameter("D7@Ребро-кромка11@Панель внутр.-4.Part").SetValue3(25, 3, "Правая");
+                swModel.Extension.SelectByID2("Ребро-кромка12@Панель внутр.-4@шр", "BODYFEATURE", 0, 0, 0, false, 0, null, 0);
+                swModel.EditSuppress2();
+                swModel.Extension.SelectByID2("Ребро-Кромка13@Панель внутр.-4@шр", "BODYFEATURE", 0, 0, 0, false, 0, null, 0);
+                swModel.EditUnsuppress2();
+                swAssy.EditAssembly();
             }
 
+            // Редакция высоты
+
+            swModel.Extension.SelectByID2("D2@Эскиз1@Панель внутр.-4@шр", "DIMENSION", 0, 0, 0, false, 0, null, 0);
+            swModel.IParameter("D2@Эскиз1@Панель внутр.-4.Part").SetValue3(heightCabinet, 3, "Правая");
 
             // Редакция крыши
 
@@ -99,10 +125,21 @@ namespace ШР
 
             //
 
-            // Открытие сборки
+            // Редакция сборки сборки
+            if (widthCabinet>1500)
+            {
+                swModel.Extension.SelectByID2("Совпадение49", "MATE", 0, 0, 0, false, 0, null, 0);
+                swModel.EditSuppress2();
+                swModel.Extension.SelectByID2("Вставка-1@шр", "COMPONENT", 0, 0, 0, false, 0, null, 0);
+                swModel.EditUnsuppress2();
+            }
+            
+
+
 
             swModel.EditRebuild3();
-
+            
         }
+        
     }
 }
